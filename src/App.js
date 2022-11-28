@@ -10,7 +10,7 @@ function App() {
         const response = await fetch(url).then((res) => res.json());
         if(response.status === 500){
             console.log(response)
-            alert(`Server error! API not working, For more info view console. For developer : Please note that, it is server bug not mine 😔`)
+            alert(`For technical analyzer of this project: API not working, For more info view console. Please note that, it is server bug not mine 😔. It is not shown in production environment`)
         }else{
             setAnimes(response);
         }
