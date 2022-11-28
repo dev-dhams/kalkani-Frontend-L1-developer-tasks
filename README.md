@@ -13,8 +13,7 @@ search anything
 
 ### Note : API is not working. 
 Try to open this link. it showing error. I hope this issue resolve whenever this project is opened for technical analysis.
-`https://api.jikan.moe/v4/characters?page=0&limit=15&q=saki&order_by=fav
-orites&sort=desc`
+`https://api.jikan.moe/v4/characters?page=0&limit=15&q=saki&order_by=favorites&sort=desc`
 
 ## Getting started / Installing
 
