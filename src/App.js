@@ -7,8 +7,13 @@ function App() {
 
     const getAnimes = async (formData) => {
         const url = `https://api.jikan.moe/v4/characters?page=0&limit=15&q=${formData}&order_by=favorites&sort=desc`;
-        const list = await fetch(url).then((res) => res.json());
-        setAnimes(list);
+        const response = await fetch(url).then((res) => res.json());
+        if(response.status === 500){
+            console.log(response)
+            alert(`Server error! API not working, For more info view console. For developer : Please note that, it is server bug note mine ☺️`)
+        }else{
+            setAnimes(response);
+        }
     };
 
     const onFormSubmit = async (e) => {
@@ -21,8 +26,6 @@ function App() {
     useEffect(() => {
         getAnimes("");
     }, []);
-
-    console.log(animes);
 
     return (
         <div className="App">
