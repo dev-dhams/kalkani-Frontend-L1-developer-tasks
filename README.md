@@ -18,6 +18,7 @@ Please follow below steps to install dependencies and run this project.
 ```shell
 git clone https://github.com/dev-dhams/kalkani-frontend-L1-developer-tasks.git
 cd kalkani-frontend-L1-developer-tasks 
+npm install
 npm start
 ```
 
