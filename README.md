@@ -5,15 +5,11 @@
 
 Technologies: React / VueJS / Angular
 * Create a search page to show search results with fields shown in the wireframe below.
-○ Show Max 15 results on the page
-○ Show a warning message, if there is no result returned for a given
+* Show Max 15 results on the page
+* Show a warning message, if there is no result returned for a given
 search query
-○ By default, the page shows the top 15 characters if the user did not
+* By default, the page shows the top 15 characters if the user did not
 search anything
-
-### Note : API is not working. 
-Try to open this link. it showing error. I hope this issue resolve whenever this project is opened for technical analysis.
-`https://api.jikan.moe/v4/characters?page=0&limit=15&q=saki&order_by=favorites&sort=desc`
 
 ## Getting started / Installing
 
