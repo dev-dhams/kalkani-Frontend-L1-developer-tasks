@@ -13,7 +13,7 @@ search anything
 
 ## Getting started / Installing
 
-Please following steps to install dependencies and run this project.
+Please follow below steps to install dependencies and run this project.
 
 ```shell
 git clone https://github.com/dev-dhams/kalkani-frontend-L1-developer-tasks.git
