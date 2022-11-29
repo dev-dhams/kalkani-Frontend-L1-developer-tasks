@@ -2,33 +2,44 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-    const [animes, setAnimes] = useState({});
-    const [formData, setFormData] = useState("");
-
+    const [animes, setAnimes] = useState(
+        {}
+    ); /*  Store anime character list in state */
+    const [isLoading, setIsLoading] = useState(true);
+    const [formData, setFormData] =
+        useState(""); /* Store searching query in state. i.e character name */
+    /* Get anime list using GET request from server and store it in animes object */
     const getAnimes = async (formData) => {
+        setIsLoading(true);
         const url = `https://api.jikan.moe/v4/characters?page=0&limit=15&q=${formData}&order_by=favorites&sort=desc`;
         const response = await fetch(url).then((res) => res.json());
-        if(response.status === 500){
-            console.log(response)
-            alert(`For technical analyzer of this project: API not working, For more info view console. Please note that, it is server bug not mine 😔. It is not shown in production environment`)
-        }else{
+        if (response.status === 500) {
+            console.log(response);
+            setIsLoading(false);
+            alert(
+                `For technical analyzer of this project: API not working, For more info view console. Please note that, it is server bug not mine 😔. It is not shown in production environment`
+            );
+        } else {
             setAnimes(response);
+            setIsLoading(false);
         }
     };
-
+    /* handle from submission and then get data from server*/
     const onFormSubmit = async (e) => {
-        console.log(formData);
         getAnimes(formData);
         setFormData("");
         e.preventDefault();
     };
-
+    /* It is used as compound life cycle method, run only once when compound did mount */
     useEffect(() => {
-        getAnimes("");
+        getAnimes(
+            ""
+        ); /* By default, the page shows the top 15 characters if the user did not search anything */
     }, []);
 
     return (
         <div className="App">
+            {/* Header - search bar */}
             <header className="header shadow">
                 <div>
                     <h2 className="text-center header-title text-light">
@@ -75,9 +86,15 @@ function App() {
                     </h5>
                 </div>
             </header>
+            {/* Create list of find anime */}
             <div className="container mt-4">
-                {animes.data === undefined || animes.data.length === 0 ? (
-                    <h2 className="text-center mt-5">No result found !</h2>
+                {animes.data === undefined ||
+                animes.data.length ===
+                    0 /* Show a info message, if axios still fetching data from server or there is no result returned for a given search query */ ? (
+                    <h2 className="text-center mt-5">
+                        {" "}
+                        {isLoading ? "Loading...." : "No result found !"}
+                    </h2>
                 ) : (
                     animes.data.map((anime, index) => {
                         return (
